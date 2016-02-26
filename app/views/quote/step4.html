@@ -1,0 +1,32 @@
+<div id="QuoteStep4">
+  <div id="QuoteStep4Hi" class="QuoteTitleText2 IncrementalElement">
+    About your company
+  </div>
+
+  <div id="QuoteStep4Message" class="QuoteTitleText3 IncrementalElement">
+    <br />
+    <p>
+      How many employees has "{{ QuoteService.CompanyName }}"?
+    </p>
+    <form ng-submit="GoQuoteStep5()">
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="QuoteService.CompanyEmployeesNumber" name="optionsRadios" id="optionsRadios1" value="1_5" checked> 1 - 5
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="QuoteService.CompanyEmployeesNumber" name="optionsRadios" id="optionsRadios2" value="5_10"> 5 - 10
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="QuoteService.CompanyEmployeesNumber" name="optionsRadios" id="optionsRadios3" value="_10"> more than 10
+        </label>
+      </div>
+      <br />
+      <input class="btn btn-default btn-lg" type="submit" value="that's the number" ng-show="QuoteService.CompanyEmployeesNumber != null" />
+    </form>
+  </div>
+
+</div>

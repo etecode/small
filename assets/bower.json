@@ -1,0 +1,23 @@
+{
+  "name": "assets",
+  "authors": [
+    "Andre Filipe Silva <andresilva@deloitte.pt>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.5.0",
+    "jquery": "2.2.0"
+  }
+}

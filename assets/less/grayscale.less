@@ -1,0 +1,452 @@
+// out:  ./../css/grayscale.css, sourcemap: false, compress: true
+@import "variables.less";
+@import "mixins.less";
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Lora","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: white;
+  background-color: #fff;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 35px;
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+p {
+  margin: 0 0 25px;
+  font-size: 18px;
+  line-height: 1.5;
+  @media(min-width:768px) {
+    margin: 0 0 35px;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+}
+a {
+  color: @BackgroundColor;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: darken(@BackgroundColor,20%);
+  }
+}
+.light {
+  font-weight: 400;
+}
+.navbar-custom {
+  margin-bottom: 0;
+  border-bottom: 1px solid fade(white, 30%);
+  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: black;
+  .navbar-toggle {
+    padding: 4px 6px;
+    font-size: 16px;
+    color: white;
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+  .navbar-brand {
+    font-weight: 700;
+    &:focus {
+      outline: none;
+    }
+  }
+  a {
+    color: white;
+  }
+  .nav {
+    li {
+      a {
+        -webkit-transition: background 0.3s ease-in-out;
+        -moz-transition: background 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out;
+        &:hover {
+          color: fade(white, 80%);
+          outline: none;
+          background-color: transparent;
+        }
+        &:focus,
+        &:active {
+          outline: none;
+          background-color: transparent;
+        }
+      }
+      &.active {
+        outline: none;
+        a {
+          background-color: fade(white, 30%);
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  @media(min-width:768px) {
+    padding: 20px 0;
+    border-bottom: none;
+    letter-spacing: 1px;
+    background: transparent;
+    -webkit-transition: background 0.5s ease-in-out,padding 0.5s ease-in-out;
+    -moz-transition: background 0.5s ease-in-out,padding 0.5s ease-in-out;
+    transition: background 0.5s ease-in-out,padding 0.5s ease-in-out;
+    &.top-nav-collapse {
+      padding: 0;
+      background: @NavBarBackgroundColor;
+      font-family: Raleway;
+    }
+  }
+}
+.intro1 {
+  background: url("../img/intro-bg1.jpg") no-repeat bottom center scroll;
+}
+.intro2 {
+  background: url("../img/intro-bg2.jpg") no-repeat bottom center scroll;
+}
+.intro3 {
+  background: url("../img/intro-bg3.jpg") no-repeat bottom center scroll;
+}
+.intro4 {
+  background: url("../img/intro-bg4.jpg") no-repeat bottom center scroll;
+}
+.intro5 {
+  background: url("../img/intro-bg5.jpg") no-repeat bottom center scroll;
+}
+.intro6 {
+  background: url("../img/intro-bg6.jpg") no-repeat bottom center scroll;
+}
+.intro7 {
+  background: url("../img/intro-bg7.jpg") no-repeat bottom center scroll;
+}
+.intro8 {
+  background: url("../img/intro-bg8.jpg") no-repeat bottom center scroll;
+}
+.intro {
+  display: table;
+  width: 100%;
+  height: auto;
+  padding: 100px 0;
+  text-align: center;
+  color: white;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  -webkit-transition: @AnimationTransition;
+  transition: @AnimationTransition;
+  .intro-body {
+    display: table-cell;
+    vertical-align: middle;
+    .brand-heading {
+      font-size: 40px;
+    }
+    .intro-text {
+      font-size: 18px;
+    }
+  }
+  @media(min-width:768px) {
+    height: 100%;
+    padding: 0;
+    .intro-body {
+      .brand-heading {
+        font-size: 60px;
+      }
+      .intro-text {
+        font-size: 26px;
+      }
+    }
+  }
+}
+.btn-circle {
+  width: 70px;
+  height: 70px;
+  margin-top: 15px;
+  padding: 7px 16px;
+  border: 2px solid white;
+  border-radius: 100% !important;
+  font-size: 40px;
+  color: white;
+  background: transparent;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+  &:hover,
+  &:focus {
+    outline: none;
+    color: white;
+    background: fade(white, 10%);
+  }
+  i.animated {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+  }
+  &:hover {
+    i.animated {
+      -webkit-animation-name: pulse;
+      -moz-animation-name: pulse;
+      -webkit-animation-duration: 1.5s;
+      -moz-animation-duration: 1.5s;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-timing-function: linear;
+    }
+  }
+}
+@-webkit-keyframes pulse {
+  0 {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-moz-keyframes pulse {
+  0 {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.content-section {
+  padding-top: 40px;
+}
+.quote-section {
+  width: 100%;
+  padding: 50px 0;
+  color: white;
+  background: url("../img/downloads-bg.jpg") no-repeat center center scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+#map {
+  width: 100%;
+  height: 200px;
+  margin-top: 100px;
+}
+@media(min-width:767px) {
+  .content-section {
+    padding-top: 80px;
+  }
+  .quote-section {
+    padding: 100px 0;
+  }
+  #map {
+    height: 400px;
+    margin-top: 250px;
+  }
+}
+.btn {
+  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 400;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0;
+}
+.btn-default {
+  border: 1px solid @AccentBackgroundColor;
+  color: #fff;
+  background-color: @AccentBackgroundColor;
+  border-radius: 5px;
+  &:hover,
+  &:focus {
+    outline: none;
+    color: #fff;
+    border: 1px solid darken(@AccentBackgroundColor,10%);
+    background-color: darken(@AccentBackgroundColor,10%);
+  }
+}
+ul.banner-social-buttons {
+  margin-top: 0;
+  @media(max-width:1199px) {
+    margin-top: 15px;
+  }
+  @media(max-width:767px) {
+    li {
+      display: block;
+      margin-bottom: 20px;
+      padding: 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+footer {
+  padding: 50px 0;
+  p {
+    margin: 0;
+  }
+}
+ ::-moz-selection {
+  text-shadow: none;
+  background: #fcfcfc;
+  background: fade(white, 20%);
+}
+ ::selection {
+  text-shadow: none;
+  background: #fcfcfc;
+  background: fade(white, 20%);
+}
+img::selection {
+  background: transparent;
+}
+img::-moz-selection {
+  background: transparent;
+}
+body {
+  webkit-tap-highlight-color: fade(white, 20%);
+}
+.brand-heading {
+  font-family: 'Varela Round', sans-serif;
+}
+.navbar-brand {
+  display: none;
+  font-family: 'Varela Round', sans-serif;
+}
+.top-nav-collapse {
+  .navbar-brand {
+    display: block;
+  }
+}
+.navbar-nav,
+.quote-section,
+.intro-text {
+  font-family: Raleway;
+}
+#Logo {
+  width: 25%;
+  margin-bottom: 20px;
+}
+#about,
+#contact {
+  color: #292e31;
+  font-family: 'Varela Round';
+}
+.img-responsive {
+  display: -webkit-inline-box;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+footer {
+  background-color: @NavBarBackgroundColor;
+  color: #fff;
+}
+.FooterLeft {
+  text-align: right;
+}
+.FooterRight {
+  text-align: left;
+}
+#DDFooterLogo {
+  height: 50px;
+  margin-top: 15px;
+}
+///////////////////////////////////////////////////
+.QuoteFormInput {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 25px;
+    height: 40px;
+}
+.floatLeft {
+  float: left;
+}
+.floatRight {
+  float: right;
+}
+.LogoLabelFont {
+  font-family: 'Varela Round',sans-serif;
+}
+#QuoteBox {
+  overflow: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+  z-index: 1031; //above Navbar
+  padding-left: 100px;
+  padding-top: 100px;
+  padding-right: 100px;
+}
+#QuoteBoxHeader {
+  height: 60px;
+  line-height: 50px;
+  font-family: Raleway;
+  width: 100%;
+  #QuoteBoxLogo {
+    height: 50px;
+  }
+  #QuoteBoxLogoLabel, #QuoteBoxUserFileIcon {
+    height: 50px;
+    line-height: 50px;
+    font-family: Raleway;
+    margin-left: 10px;
+  }
+}
+.IncrementalElement {
+  display:none;
+}
+.QuoteTitleText1 {
+  font-family: Raleway;
+  font-size: 60px;
+}
+.QuoteTitleText2 {
+  font-family: Raleway;
+  font-size: 45px;
+}
+.QuoteTitleText3 {
+  font-family: Raleway;
+  font-size: 36px;
+}
+.QuoteTitleText4 {
+  font-family: Raleway;
+  font-size: 25px;
+}
+#QuoteBoxView {
+  width: 100%;
+}
+#QuoteBoxUserFileModal{
+  color:#000;
+}

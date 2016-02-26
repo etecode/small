@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="description" content="">
+  <meta name="author" content="Deloitte Digital">
+  <link rel="shortcut icon" href="app/assets/img/logo.png">
+
+  <!-- Apple -->
+  <link rel="apple-touch-icon-precomposed" href="app/assets/img/logo.png" />
+  <link rel="apple-touch-icon" href="app/assets/img/logo.png" />
+  <link rel="apple-touch-startup-image" href="app/assets/img/logo.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+
+  <title>small</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="app/assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="app/assets/css/grayscale.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="app/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Other Styles-->
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="app/assets/js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="app/assets/js/bootstrap.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script type="text/javascript" src="app/assets/js/jquery.easing.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="app/assets/js/grayscale.js"></script>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <!--Vendor Scripts-->
+  <script type="text/javascript" src="app/assets/bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="app/assets/js/perfect-scrollbar.jquery.min.js"></script>
+
+  <!--Our Scripts-->
+  <script type="text/javascript" src="app/app.module.js"></script>
+  <script type="text/javascript" src="app/services/WindowService.js"></script>
+  <script type="text/javascript" src="app/services/QuoteService.js"></script>
+  <script type="text/javascript" src="app/controllers/AppController.js"></script>
+  <script type="text/javascript" src="app/controllers/QuoteController.js"></script>
+
+  <!-- Receiving Logging Configurations -->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-app="smallApp" ng-controller="AppController">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand page-scroll" href="#page-top">
+          small
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <ul class="nav navbar-nav">
+          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+          <li class="hidden">
+            <a href="#page-top">
+            </a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#about">about</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#quote">quote</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#contact">contact</a>
+          </li>
+          <li>
+            <a class="page-scroll">login</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+
+  <!-- Intro Header -->
+  <header id="IntroHeader" class="intro intro1">
+    <div id="IntroBox" class="intro-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <img id="Logo" src="app/assets/img/logo.png" />
+            <h4 class="brand-heading">welcome to small</h4>
+            <p class="intro-text">One Business, One Insurance</p>
+            <div>
+              <a class="btn btn-default btn-lg" ng-click="GoQuote()">Get a Quote Now</a>
+            </div>
+            <br />
+            <a href="#about" class="btn btn-circle page-scroll">
+              <i class="fa fa-angle-double-down animated"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="QuoteBox">
+      <div id="QuoteBoxHeader">
+        <div class="floatLeft">
+          <img id="QuoteBoxLogo" src="app/assets/img/logo.png" />
+        </div>
+        <div id="QuoteBoxLogoLabel" class="floatLeft QuoteTitleText3">
+          quote
+        </div>
+        <div id="QuoteBoxUserFileIcon" class="floatRight QuoteTitleText3" ng-show="QuoteService.CurrentStep > 1" data-toggle="modal" data-target="#QuoteBoxUserFileModal">
+          <i class="fa fa-file-text-o"></i>
+        </div>
+      </div>
+      <div id="QuoteBoxView">
+        <div ng-include="'app/views/quote/step1.html'" ng-show="QuoteService.CurrentStep == 1">
+        </div>
+        <div ng-include="'app/views/quote/step2.html'" ng-show="QuoteService.CurrentStep == 2">
+        </div>
+        <div ng-include="'app/views/quote/step3.html'" ng-show="QuoteService.CurrentStep == 3">
+        </div>
+        <div ng-include="'app/views/quote/step3_1.html'" ng-show="QuoteService.CurrentStep == 3.1">
+        </div>
+        <div ng-include="'app/views/quote/step4.html'" ng-show="QuoteService.CurrentStep == 4">
+        </div>
+        <div ng-include="'app/views/quote/step5.html'" ng-show="QuoteService.CurrentStep == 5">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="container content-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 blue">
+          <h1>We're here to make your life simple</h1>
+          <br>
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <img alt="Sass and Less support" class="img-responsive" src="app/assets/img/icons_homepage_01.png">
+          <h1>One company,
+            <br>One policy</h1>
+          <p>One company, one policy means you only get billed once. In other words, half the paperwork and no headaches.</p>
+        </div>
+        <div class="col-lg-4">
+          <img alt="Sass and Less support" class="img-responsive" src="app/assets/img/icons_homepage_02.png">
+          <h1>The end of one size fits all</h1>
+          <p>Because every business is unique we designed a configurable package that lets you choose what really makes sense for your business.</p>
+        </div>
+        <div class="col-lg-4">
+          <img alt="Sass and Less support" class="img-responsive" src="app/assets/img/icons_homepage_03.png">
+          <h1>Easy to setup and transparent</h1>
+          <p>Small speaks in plain english and without those small paragraphs. The entire process was designed to be transparent and so easy that even a child could understand.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <a href="">LEARN MORE</a>
+        </div>
+        <div class="col-lg-4">
+          <a href="">LEARN MORE</a>
+        </div>
+        <div class="col-lg-4">
+          <a href="">LEARN MORE</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- quote Section -->
+  <section id="quote" class="content-section text-center">
+    <div class="quote-section">
+      <div class="container">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h3>
+            A unique Insurance for your Business
+          </h3>
+          <p>We believe insurance should be simple.
+            <br> If you have one business then all you need is one
+            <br>insurance policy. And it should be simple to setup.
+          </p>
+          <a class="btn btn-default btn-lg" ng-click="GoQuote()">Get a Quote Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container content-section text-center">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <h2>Want help?</h2>
+        <p>
+          Talk with a guide or call 1-855-DIGITAL-88
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 FooterLeft">
+            <a href="">Terms of Service</a>
+          </div>
+          <div class="col-lg-6 FooterRight">
+            <a href="">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 center-column">
+            <img id="DDFooterLogo" src="app/assets/img/ddlogo.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="QuoteBoxUserFileModal" tabindex="-1" role="dialog" aria-labelledby="QuoteBoxUserFileModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="QuoteBoxUserFileModalLabel">What I know about you</h4>
+        </div>
+        <div class="modal-body">
+          <p ng-show="QuoteService.Name != ''">
+            Your name is <b>{{ QuoteService.Name }}</b>
+          </p>
+          <p ng-show="QuoteService.CompanyName != ''">
+            Your Company name is <b>{{ QuoteService.CompanyName }}</b>
+          </p>
+          <p ng-show="QuoteService.CompanyIndustry != null">
+            {{ QuoteService.CompanyName }}'s is from the <b>{{ QuoteService.CompanyIndustry }} Industry</b>
+          </p>
+          <p ng-show="QuoteService.CompanyAddress != ''">
+            it's located at <b>{{ QuoteService.CompanyAddress }}</b>
+          </p>
+          <p ng-show="QuoteService.CompanyEmployeesNumber != null">
+            has <b>{{ QuoteService.CompanyEmployeesNumber }} Employees</b>
+          </p>
+          <p ng-show="QuoteService.CompanyTurnover != 0">
+            and a Turnover of <b>{{ QuoteService.CompanyTurnover }} euros</b>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

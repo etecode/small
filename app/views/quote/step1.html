@@ -1,0 +1,26 @@
+<div id="QuoteStep1">
+  <div id="QuoteStep1Hi" class="QuoteTitleText1 IncrementalElement">
+    Hi! :)
+  </div>
+  <div id="QuoteStep1Welcome" class="QuoteTitleText2 IncrementalElement">
+    Welcome to <span class="LogoLabelFont">small</span> quote
+  </div>
+
+  <div id="QuoteStep1Message" class="QuoteTitleText4 IncrementalElement">
+    <br />
+    <p>
+      Let me get to know you a little better so I can get what you need
+    </p>
+  </div>
+
+  <div class="QuoteTitleText4 IncrementalElement QuoteStep1Form">
+    <p>
+      So, tell me, what's your name?
+    </p>
+    <form ng-submit="GoQuoteStep2()">
+      <input type="text" class="form-control QuoteFormInput" id="QuoteStep1FormInput" placeholder="My name is..." ng-model="QuoteService.Name" />
+      <br />
+      <input class="btn btn-default btn-lg" type="submit" value="it's me" ng-show="QuoteService.Name != ''" />
+    </form>
+  </div>
+</div>

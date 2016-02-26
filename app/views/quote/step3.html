@@ -1,0 +1,27 @@
+<div id="QuoteStep3">
+  <div id="QuoteStep3Hi" class="QuoteTitleText2 IncrementalElement">
+    About your company
+  </div>
+
+  <div id="QuoteStep3Message" class="QuoteTitleText3 IncrementalElement">
+    <br />
+    <p>
+      What's the industry of "{{ QuoteService.CompanyName }}"?
+    </p>
+    <form ng-submit="GoQuoteStep3_1()">
+      <select class="form-control QuoteFormInput" ng-model="QuoteService.CompanyIndustry">
+        <option value="01111"><b>01111</b> Cerealicultura</option>
+        <option value="24301"><b>24301</b> Fabricação de tintas</option>
+        <option value="26211"><b>26211</b> Olaria de barro</option>
+        <option value="26211"><b>26211</b> Fabricação de azulejos</option>
+        <option value="29550"><b>29550</b> Fabricação de máquinas</option>
+        <option value="37100"><b>37100</b> Reciclagem de sucata</option>
+        <option value="55118"><b>55118</b> Apartamentos turísticos com restaurante</option>
+        <option value="74402"><b>74402</b> Gestão de suportes publicitários</option>
+      </select>
+      <br />
+      <input class="btn btn-default btn-lg" type="submit" value="is this one" ng-show="QuoteService.CompanyIndustry != null" />
+    </form>
+  </div>
+
+</div>

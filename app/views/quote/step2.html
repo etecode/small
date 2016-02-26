@@ -1,0 +1,31 @@
+<div id="QuoteStep2">
+  <div id="QuoteStep2Hi" class="QuoteTitleText2 IncrementalElement">
+    <span>
+      <span ng-show="CurrentHour > 6 && CurrentHour < 12">
+        Good Morning
+      </span>
+      <span ng-show="CurrentHour > 12 && CurrentHour < 20">
+        Good Afertnoon
+      </span>
+      <span ng-show="CurrentHour > 20 && CurrentHour < 6">
+        Good Evening
+      </span>
+    </span>
+    <span>
+      {{ " " + QuoteService.Name }}!
+    </span>
+  </div>
+
+  <div id="QuoteStep2Message" class="QuoteTitleText4 IncrementalElement">
+    <br />
+    <p>
+      What's the name of your company?
+    </p>
+    <form ng-submit="GoQuoteStep3()">
+      <input type="text" class="form-control QuoteFormInput" id="QuoteStep2FormInput" placeholder="My company name is..." ng-model="QuoteService.CompanyName" />
+      <br />
+      <input class="btn btn-default btn-lg" type="submit" value="that's the name" ng-show="QuoteService.CompanyName != ''" />
+    </form>
+  </div>
+
+</div>

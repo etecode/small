@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!--Metadata-->
+  <base href="/">
+  <title>Techathon</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="HandheldFriendly" content="true" />
+  <link rel="apple-touch-icon-precomposed" href="assets/img/Techathon_Logo.png" />
+  <link rel="apple-touch-icon" href="assets/img/Techathon_Logo.png" />
+  <link rel="apple-touch-startup-image" href="assets/img/Techathon_Logo.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <!--Stylesheets and Fonts-->
+  <link type="text/css" rel="stylesheet" href="assets/css/main.min.css">
+  <link type="text/css" rel="stylesheet" href="assets/css/tablet.min.css">
+  <link type="text/css" rel="stylesheet" href="assets/css/mobile.min.css">
+  <link type="text/css" rel="stylesheet" href="assets/css/perfect-scrollbar.min.css">
+  <link rel="shortcut icon" href="assets/img/Techathon_Logo.png">
+
+  <!--Vendor Scripts-->
+  <script type="text/javascript" src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="assets/js/perfect-scrollbar.jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/LogClient.js"></script>
+  <script type="text/javascript" src="assets/js/falcor.browser.min.js"></script>
+
+  <!--Our Scripts-->
+  <script type="text/javascript" src="app/app.module.js"></script>
+  <script type="text/javascript" src="app/controllers/AppController.js"></script>
+  <script type="text/javascript" src="app/controllers/HomeController.js"></script>
+  <script type="text/javascript" src="app/controllers/AboutController.js"></script>
+  <script type="text/javascript" src="app/controllers/RegisterController.js"></script>
+  <script type="text/javascript" src="app/controllers/ChallengeController.js"></script>
+  <script type="text/javascript" src="app/controllers/PrizesController.js"></script>
+  <script type="text/javascript" src="app/controllers/LocationController.js"></script>
+  <script type="text/javascript" src="app/services/WindowService.js"></script>
+  <script type="text/javascript" src="app/services/RequestService.js"></script>
+  <script type="text/javascript" src="app/services/TeamService.js"></script>
+  <script type="text/javascript" src="app/repositories/TeamRepository.js"></script>
+  <script type="text/javascript">
+    function GoMainMenu() {
+      $("#LandingContainer").hide();
+      $("#MainContainer").show();
+    }
+  </script>
+
+  <!-- Receiving Logging Configurations -->
+  <script>
+    var configurations = <%- JSON.stringify(configurations) %>
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-74207828-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</head>
+
+<!--Main Body-->
+
+<body ng-app="techathonApp" ng-controller="AppController">
+
+  <div id="ResponsiveHelpPanelContainer">
+    <div class="ResponsiveHelpPanel" id="ResponsiveHelpPanelDesktop">
+    </div>
+    <div class="ResponsiveHelpPanel" id="ResponsiveHelpTabletLandscape">
+    </div>
+    <div class="ResponsiveHelpPanel" id="ResponsiveHelpTabletPortrait">
+    </div>
+    <div class="ResponsiveHelpPanel" id="ResponsiveHelpMobileLandscape">
+    </div>
+    <div class="ResponsiveHelpPanel" id="ResponsiveHelpMobilePortrait">
+    </div>
+  </div>
+
+  <div id="BackgoundMain">
+  </div>
+
+  <div id="BackgoundEffects">
+  </div>
+
+  <div id="MainContainer">
+    <div id="BackgoundPersons">
+      <img class="BackgoundPersonsItem BackgoundPersonsItemPerson0" src="assets/img/people/person0.png" />
+      <img class="BackgoundPersonsItem BackgoundPersonsItemPerson1" src="assets/img/people/person1.png" />
+      <img class="BackgoundPersonsItem BackgoundPersonsItemPerson2" src="assets/img/people/person2.png" />
+      <img class="BackgoundPersonsItem BackgoundPersonsItemPerson3" src="assets/img/people/person3.png" />
+      <img class="BackgoundPersonsItem BackgoundPersonsItemPerson4" src="assets/img/people/person4.png" />
+      <img class="BackgoundPersonsItem BackgoundPersonsItemPerson5" src="assets/img/people/person5.png" />
+    </div>
+
+    <div id="LoadingPanel" class="TextUppercase TextLight" ng-click="StopLoading()">
+      <div id="LoadingPanelMessage">
+        can you
+        <br />
+        <span class="TextMedium">code</span>
+        <br /> until it
+        <br />
+        <span class="TextMedium">hurts?</span>
+      </div>
+      <div id="LoadingPanelProgressBar">
+      </div>
+      <div id="LoadingPanelProgressBarLabel">
+        reading the <span class="TextMedium">code</span>
+      </div>
+    </div>
+
+    <div id="MainPanel">
+      <div id="MainPanelLabel1" class="MainPanelLabel" ng-click="GoDetail(1, 'about')" ng-mouseover="MouseOverDetail(1)" ng-mouseleave="MouseLeaveDetail()">
+        about
+      </div>
+      <div id="MainPanelLabel2" class="MainPanelLabel" ng-click="GoDetail(2, 'register')" ng-mouseover="MouseOverDetail(2)" ng-mouseleave="MouseLeaveDetail()">
+        register
+      </div>
+      <div id="MainPanelLabel3" class="MainPanelLabel" ng-click="GoDetail(3, 'challenge')" ng-mouseover="MouseOverDetail(3)" ng-mouseleave="MouseLeaveDetail()">
+        challenge
+      </div>
+      <div id="MainPanelLabel4" class="MainPanelLabel" ng-click="GoDetail(4, 'prizes')" ng-mouseover="MouseOverDetail(4)" ng-mouseleave="MouseLeaveDetail()">
+        prizes
+      </div>
+      <div id="MainPanelLabel5" class="MainPanelLabel" ng-click="GoDetail(5, 'location')" ng-mouseover="MouseOverDetail(5)" ng-mouseleave="MouseLeaveDetail()">
+        location
+      </div>
+    </div>
+    <div id="DetailsPanel">
+      <div id="DetailsPanelHeaderBackButton" ng-click="GoMenu()">
+        <div class="floatSpan">
+          <img class="BackArrow" src="assets/img/backarrow.png" />
+        </div>
+        <div class="floatSpan DetailsPanelHeaderBackButtonLabel">Back</div>
+      </div>
+      <div id="DetailsPanelHeader">
+        {{ currentDetailLabel }}
+      </div>
+      <div id="DetailsPanelContent">
+        <div ng-include="'app/views/about/index.html'" ng-controller="AboutController" ng-show="currentDetailCode == 1">
+        </div>
+        <div ng-include="'app/views/register/index.html'" ng-controller="RegisterController" ng-show="currentDetailCode == 2">
+        </div>
+        <div ng-include="'app/views/challenge/index.html'" ng-controller="ChallengeController" ng-show="currentDetailCode == 3">
+        </div>
+        <div ng-include="'app/views/prizes/index.html'" ng-controller="PrizesController" ng-show="currentDetailCode == 4">
+        </div>
+        <div ng-include="'app/views/location/index.html'" ng-controller="LocationController" ng-show="currentDetailCode == 5">
+        </div>
+      </div>
+    </div>
+
+    <div id="MainLogo" ng-click="ToogleHomeSplash()" ng-mouseover="ToogleHomeSplashOnOver(true)" ng-mouseleave="ToogleHomeSplashOnOver(false)">
+      <img src="assets/img/Techathon_Logo.png" />
+      <div id="SubLogo">
+        <img src="assets/img/Techathon_SubLogo.png" />
+      </div>
+    </div>
+    <div id="RightMenu">
+      <div class="RightMenuPart">
+        <span class="RightMenuPartBold" ng-show="HideDate(13)">March</span> <span ng-show="HideDate(11)">11/</span><span ng-show="HideDate(12)">12/</span><span ng-show="HideDate(13)">13</span>
+      </div>
+      <div class="RightMenuPart" ng-mouseover="ShowShareMenuOnOver()" ng-mouseleave="HideShareMenuOnLeave()">
+        <img id="RightMenuPartSoundIcon" src="assets/img/Techathoniconsound.png" ng-mouseover="ToggleIcon('RightMenuPartSoundIcon')" ng-mouseleave="ToggleIcon('RightMenuPartSoundIcon')" ng-click="ToggleShareMenu()" />
+        <div id="RightMenuPartSoundExtend" class="RightMenuExtend">
+          <div>
+            <img id="fblogo" class="RightMenuPartDDMenuExtendIcon RightMenuPartDDMenuExtendIconShare" src="assets/img/fblogo.png" ng-mouseover="ToggleIcon('fblogo')" ng-mouseleave="ToggleIcon('fblogo')" ng-click="OpenOutside('https://www.facebook.com/DeloitteChallengeIT/');ToggleShareMenu()"
+            />
+            <img id="twitterlogo" class="RightMenuPartDDMenuExtendIcon RightMenuPartDDMenuExtendIconShare" src="assets/img/twitterlogo.png" ng-mouseover="ToggleIcon('twitterlogo')" ng-mouseleave="ToggleIcon('twitterlogo')" ng-click="OpenOutside('https://www.twitter.com');ToggleShareMenu()"
+            />
+            <img id="googleplus" class="RightMenuPartDDMenuExtendIcon RightMenuPartDDMenuExtendIconShare" src="assets/img/googleplus.png" ng-mouseover="ToggleIcon('googleplus')" ng-mouseleave="ToggleIcon('googleplus')" ng-click="OpenOutside('https://plus.google.com/');ToggleShareMenu()"
+            />
+          </div>
+          <div class="TextAccentColor RightMenuPartDDMenuExtendLabel">
+            <div class="RightMenuPartDDMenuExtendLabelSub">
+              Spread
+              <br />the word
+            </div>
+            <div class="RightMenuPartDDMenuExtendSeparator"></div>
+          </div>
+        </div>
+      </div>
+      <div class="RightMenuPart" ng-mouseover="ShowSponsorsMenuOnOver()" ng-mouseleave="HideSponsorsMenuOnLeave()">
+        <img id="RightMenuPartDDMenu" src="assets/img/DD_green.png" ng-mouseover="ShowOtherDDLogo()" ng-mouseleave="ShowNormalDDLogo()" ng-click="ToggleSponsorsMenu()" />
+        <div id="RightMenuPartDDMenuExtend" class="RightMenuExtend">
+          <div class="TextAccentColor RightMenuPartDDMenuExtendLabel">
+            Challenger
+            <div class="RightMenuPartDDMenuExtendSeparator"></div>
+          </div>
+          <div>
+            <img id="BITALINOlogo" class="RightMenuPartDDMenuExtendIcon" src="assets/img/BITALINOlogo.png" ng-mouseover="ToggleIcon('BITALINOlogo')" ng-mouseleave="ToggleIcon('BITALINOlogo')" ng-click="OpenOutside('http://www.bitalino.com/');ToggleSponsorsMenu()"
+            />
+            <img id="RedBulllogo" class="RightMenuPartDDMenuExtendIcon" src="assets/img/REDBULLlogo.png" ng-mouseover="ToggleIcon('RedBulllogo')" ng-mouseleave="ToggleIcon('RedBulllogo')" ng-click="OpenOutside('http://www.redbull.com/pt/pt');ToggleSponsorsMenu()"
+            />
+          </div>
+          <div class="TextAccentColor RightMenuPartDDMenuExtendLabel">
+            Supporters
+            <div class="RightMenuPartDDMenuExtendSeparator"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="HomeSplash" ng-click="HideHomeSplash()">
+      <div class="HomeSplashText">
+        Sometimes <span>hurt</span>
+        <br /> Doesn't mean pain...
+      </div>
+    </div>
+
+  </div>
+
+  <div id="LandingContainer">
+    <div class="DDLogo" ng-dblclick="ShowMainMenu()">
+      <img src="assets/img/DD_RGB_white_lg.png" />
+    </div>
+    <div class="MainLogo">
+      <img src="assets/img/Techathon_Logo_big.png" />
+    </div>
+    <div class="SloganLabel">
+      The Most <span>Disruptive Techathon</span> of the year
+    </div>
+    <div class="DateAndPlaceLabel">
+      Oporto <span class="RightMenuPartBold">March</span> 11/12/13
+    </div>
+    <div class="MoreInfoLabel">
+      Applications will begin shortly
+    </div>
+  </div>
+
+</body>
+
+</html>
